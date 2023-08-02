@@ -1,1 +1,1 @@
-a:2:{i:0;a:2:{s:8:"kegiatan";N;s:6:"status";s:1:"1";}i:1;a:2:{s:8:"kegiatan";s:8:"olahraga";s:6:"status";s:1:"0";}}
+a:2:{i:1;a:2:{s:8:"kegiatan";s:8:"olahraga";s:6:"status";s:1:"0";}i:2;a:2:{s:8:"kegiatan";s:7:"mgoding";s:6:"status";s:1:"0";}}

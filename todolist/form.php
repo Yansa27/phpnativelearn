@@ -18,19 +18,25 @@ if(isset($_POST['kegiatan'])){
                 'status'=>0
             ];
     $daftar_kegiatan=serialize($todos);
-    file_put_contents('todo.txt',$daftar_kegiatan);
-    //redirect halaman
-    header('location:form.php');
+    simpanData($daftar_kegiatan);
 }
 
+// jika di temukan kegiatan GET status
 if(isset($_GET['status'])) {
     $todos[$_GET['key']]['status']=$_GET['status'];
     $daftar_kegiatan = serialize($todos);
-    file_put_contents('todo.txt', $daftar_kegiatan);
+    simpanData($daftar_kegiatan);
+}
+
+if(isset($_GET['hapus'])) {
+    unset($todos[$_GET['key']]);
+    $daftar_kegiatan = serialize($todos);
+    simpanData($daftar_kegiatan);
+}
+function simpanData($daftar_kegiatan) {
+    file_put_contents('todo.txt' , $daftar_kegiatan);
     header('location:form.php');
 }
-   
-
 print_r($todos);
     
 ?>
@@ -66,7 +72,7 @@ print_r($todos);
                 
                 ?>
             </label>
-            <a href="#">Hapus</a>
+            <a href="form.php?hapus=1&key=<?php echo $key;?>" onclick="return confirm('Apakah Anda Yakin akan menghapus data ini?')">hapus</a>
         </li>
     <?php endforeach; ?>
     </ul>
